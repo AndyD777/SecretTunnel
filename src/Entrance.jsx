@@ -1,6 +1,18 @@
 /** Users can enter their name to receive a token from the API. */
+import { useState } from "react";
+import { useAuth } from "./AuthContext";
+
 export default function Entrance() {
   // TODO: call signup when form is submitted
+  const [name, setName] = useState("");
+  const { signup, error } = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signup(name);
+  };
+
+
 
   return (
     <>
